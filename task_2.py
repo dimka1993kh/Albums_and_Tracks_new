@@ -1,4 +1,4 @@
-class Albom:
+class Album:
     def __init__(self, title, group, track_list):
         self.title = title
         self.group = group
@@ -39,8 +39,8 @@ track_six = Track('Моя непоследняя песня', 22)
 bonus_track = Track('Все зависит от нас, сомих', 666)
 
 
-albom_one = Albom('Крутой альбом', 'Группа "Мыши"', [track_one, track_two, track_three])
-albom_two = Albom('Профессионал', 'Группа "Я не вру"', [track_four, track_five, track_six])
+albom_one = Album('Крутой альбом', 'Группа "Мыши"', [track_one, track_two, track_three])
+albom_two = Album('Профессионал', 'Группа "Я не вру"', [track_four, track_five, track_six])
 
 albom_one.get_duration()
 # print()
