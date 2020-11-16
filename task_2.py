@@ -7,7 +7,9 @@ class Album:
         print(f'Список треков в альбоме "{self.title}":')
         print()
         for track in self.track_list:
-            track.show()
+# Использовали print за место show()
+            print(track)
+
     def add_track(self, new_track):
         self.track_list.append(new_track)
         print(f'В альбом "{self.title}" добавлен трек "{new_track.title}"')
@@ -15,7 +17,17 @@ class Album:
         sum_time = 0
         for track in self.track_list:
             sum_time += track.time
-        print(f'Длительность альбома "{self.title}" составляет {sum_time} секунд')        
+        print(f'Длительность альбома "{self.title}" составляет {sum_time} секунд')   
+    def show_track_list(self):
+        result = []
+        for track in self.track_list:
+            result.append(f'"{track.title}" - {track.time} \n')
+        return result
+
+# Переопределили метод __str__ для класса Album
+    def __str__(self):
+        tracks = map(print(), self.track_list)
+        return f'Имя группы: {self.group} \nНазвание альбома {self.title} \nТреки: \n {" ".join(self.show_track_list())}'    
 
 class Track:
     def __init__(self, title, time):
@@ -25,8 +37,12 @@ class Track:
         else:
             print(f'Вы указали не верное время трека "{self.title}". Нужно укзать число')
             return
-    def show(self):
-        print(f'"{self.title}" - {self.time}')
+# Переопределили "Магический метод __str__" и использовали его за место старого show()
+    def __str__(self):
+        return f'"{self.title}" - {self.time}'
+
+    # def show(self):
+    #     print(f'"{self.title}" - {self.time}')
 
 track_one = Track('Тихие', 123)
 track_two = Track('Белые', 444)
@@ -42,7 +58,7 @@ bonus_track = Track('Все зависит от нас, сомих', 666)
 albom_one = Album('Крутой альбом', 'Группа "Мыши"', [track_one, track_two, track_three])
 albom_two = Album('Профессионал', 'Группа "Я не вру"', [track_four, track_five, track_six])
 
-albom_one.get_duration()
+# albom_one.get_duration()
 # print()
 # albom_one.get_tracks()
 # print()
@@ -50,7 +66,7 @@ albom_one.get_duration()
 # print()
 # albom_one.get_tracks()
 # print()
-albom_two.get_duration()
+# albom_two.get_duration()
 # print()
 # albom_two.get_tracks()
 # print()
@@ -59,3 +75,4 @@ albom_two.get_duration()
 # albom_two.get_tracks()
 # print()
 # mistake_track = Track('Еще один трек', 'одинадцать')
+print(albom_one)
