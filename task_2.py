@@ -26,7 +26,6 @@ class Album:
 
 # Переопределили метод __str__ для класса Album
     def __str__(self):
-        tracks = map(print(), self.track_list)
         return f'Имя группы: {self.group} \nНазвание альбома {self.title} \nТреки: \n {" ".join(self.show_track_list())}'    
 
 class Track:
