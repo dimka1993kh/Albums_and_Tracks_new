@@ -43,6 +43,10 @@ class Track:
     # def show(self):
     #     print(f'"{self.title}" - {self.time}')
 
+    def __gt__(self, other):
+        if self.time and other.time:
+            return self.time > other.time
+
 track_one = Track('Тихие', 123)
 track_two = Track('Белые', 444)
 track_three = Track('Юркие', 222)
@@ -75,3 +79,5 @@ albom_two = Album('Профессионал', 'Группа "Я не вру"', [
 # print()
 # mistake_track = Track('Еще один трек', 'одинадцать')
 print(albom_one)
+print(f'Сравнение длительности track_one > track_two: {track_one > track_two}')
+print(f'Сравнение длительности track_two > track_three: {track_two > track_three}')
